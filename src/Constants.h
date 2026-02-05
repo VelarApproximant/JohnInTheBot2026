@@ -24,14 +24,14 @@
 #define kThrottleChannel 1 //TODO: tune to preference
 #define kSteeringChannel 2
 #define kWeaponChannel 3
-#define kInvertChannel 4
+#define kInvertDrivetrainChannel 4
 
 // speed limiters (1000 is full reverse and 2000 is full forward when set to bidirectional)
 #define kMinSpeed 1000
 #define kMaxSpeed 2000
 
 // we should change ts constant because it may be too smooth
-#define kRampConstant 5
+#define kRampConstant 10
 
 //loop
 #define loopDelayInMS 20

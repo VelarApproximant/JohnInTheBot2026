@@ -23,11 +23,11 @@ int RobotContainer::mapSbusToSpeed(int sbusValue) {
 }
 
 void RobotContainer::periodic() {
-    bool invertPressed = false; //is the invert button pressed?
+    bool invertDrivetrainPressed = false; //is the invert button pressed?
 
-    bool downforceKill = false;
-    bool lastKillState = false;
-    int downforceSpeed = 2000;
+    // bool downforceKill = false;
+    // bool lastKillState = false;
+    // int downforceSpeed = 2000;
 
     if (sbus.Read()) {
         auto data = sbus.data();
@@ -39,7 +39,7 @@ void RobotContainer::periodic() {
 
         // READ THE INVERT BUTTON using channel 5 as an example
         // SBUS values are usually ~172 for LOW and ~1811 for HIGH
-        invertPressed = (data.ch[kInvertChannel - 1] > 1500); 
+        invertDrivetrainPressed = (data.ch[kInvertDrivetrainChannel - 1] > 1500); 
 
         bool currentButtonState = (data.ch[kDownforceMotorChannel - 1] > 1500);
 
@@ -50,7 +50,7 @@ void RobotContainer::periodic() {
     }
 
     // pass the button state to tankDrive method
-    drivetrain.tankDrive(throttle, steering, invertPressed); 
+    drivetrain.tankDrive(throttle, steering, invertDrivetrainPressed); 
     weapon.setSpeed(weaponChannel);
 }
 
