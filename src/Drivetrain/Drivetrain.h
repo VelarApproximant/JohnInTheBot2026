@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "../Constants.h"
+#include <string>
 
 class Drivetrain {
   public:
@@ -19,7 +20,7 @@ class Drivetrain {
 
     int rampTo(int current, int target);
     int constrainSpeed(int value);
-    void sendToAM32(HardwareSerial &uart, int motorID, int speed);
+    void sendToAM32(HardwareSerial &uart, int motorID, int speed, String name);
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include "../Constants.h"
+#include <string>
 
 class Weapon {
   public:
@@ -14,7 +15,7 @@ class Weapon {
 
     int rampTo(int current, int target);
     int constrainSpeed(int value);
-    void sendToAM32(int motorID, int speed);
+    void sendToAM32(int motorID, int speed, String name);
 };
 
 #endif

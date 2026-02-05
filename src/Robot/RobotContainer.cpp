@@ -9,9 +9,9 @@ RobotContainer::RobotContainer() //cpp version of a constructor; "::" refers to 
 {} //body of constructor is empty bc nothings inside curlly braces
 
 void RobotContainer::init() {
-    Serial.begin(ESC_BAUD); //opens baus at 100000 baud
-    Serial1.begin(ESC_BAUD); // Pick any 2 free pins for TX/RX
-    Serial2.begin(ESC_BAUD); // Default Serial2 pins
+    Serial.begin(100000); //opens serial at 100000 baud
+    Serial1.begin(ESC_BAUD); 
+    Serial2.begin(ESC_BAUD); 
     
     sbus.Begin(); //sbus lib starts listening for input
     drivetrain.init(); 
