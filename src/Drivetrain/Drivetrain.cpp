@@ -7,8 +7,8 @@ void Drivetrain::init() {
   ESC_rightUART.begin(ESC_BAUD);
 }
 
-int Drivetrain::constrainSpeed(int value) {
-  return constrain(value, kMinSpeed, kMaxSpeed); //sets speed clamp
+int Drivetrain::constrainSpeed(int speed) {
+  return constrain(speed, kMinSpeed, kMaxSpeed); //sets speed clamp
 }
 
 int Drivetrain::rampTo(int current, int target) { 
@@ -36,7 +36,7 @@ void Drivetrain::sendToAM32(HardwareSerial &uart, int motorID, int speed, String
 }
 
 void Drivetrain::tankDrive(int throttle, int steering, bool buttonPressed) {
-  //toggle (Detects the moment the button is pressed)
+  //toggle logic
   if (buttonPressed && !lastButtonState) { 
     steeringInverted = !steeringInverted; // switches the state
   }

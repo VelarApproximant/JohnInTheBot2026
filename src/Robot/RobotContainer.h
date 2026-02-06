@@ -6,7 +6,8 @@
 #include "../Constants.h"
 #include "../Drivetrain/Drivetrain.h"
 #include "../Subsystem/Weapon.h"
-using namespace bfs;//bfs is the name of the sbus in our drivers
+
+using namespace bfs;//same as java static import
 
 class RobotContainer {
 public:

@@ -5,3 +5,9 @@ Useful links and downloads
 3. if you are using VSC, download the PlatformIO Extension
 4. in platformio.ini, change the lib_deps declaraion to match file path or repo for the drivers
 5. AM32 Configurator: https://am32.ca/configurator set the AM32 to "bi-directional" or else motors will be hella crazy
+
+SIMULATION (ignore if you arent going to sim)
+1. install MSYS2 https://www.msys2.org/
+2. in the msys2 terminal, run "pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain"
+3. verify gcc and g++ version with: "gcc --version" and "g++ --version"
+

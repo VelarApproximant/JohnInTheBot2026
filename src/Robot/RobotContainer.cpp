@@ -41,7 +41,7 @@ void RobotContainer::periodic() {
         // SBUS values are usually ~172 for LOW and ~1811 for HIGH
         invertDrivetrainPressed = (data.ch[kInvertDrivetrainChannel - 1] > 1500); 
 
-        bool currentButtonState = (data.ch[kDownforceMotorChannel - 1] > 1500);
+        // bool currentButtonState = (data.ch[kDownforceMotorChannel - 1] > 1500);
 
         // if (currentButtonState && !lastKillButtonState) {
         //     isMotorDisabled = !isMotorDisabled; // Flip the state
