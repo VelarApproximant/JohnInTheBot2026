@@ -3,7 +3,7 @@
 #include <string>
 
 void Weapon::init() {
-  ESC_weaponUART.begin(ESC_BAUD);
+  ESC_SpinnerUART.begin(ESC_BAUD);
 }
 
 int Weapon::constrainSpeed(int value) {
@@ -29,14 +29,14 @@ void Weapon::sendToAM32(int motorID, int speed, String name) {//void means it re
     (uint8_t)(speed >> 8), //bit shifting by 8 bits. the UART can only handle 16 bits, so we split the 16bit int for SPEED into 2 8bit binary values. this holds the upper half
     (uint8_t)(speed &0xFF)// we now send the lower 8 bits of the speed. we basically butchered the shit out of the speed intager because the AM32 is a little bitch
   };
-  ESC_weaponUART.write(packet, 4); //print() is human readable while write() is raw binary so it pushes everything to the UART.. packet is the array and 4 is the number of bytes to send
+  ESC_SpinnerUART.write(packet, 4); //print() is human readable while write() is raw binary so it pushes everything to the UART.. packet is the array and 4 is the number of bytes to send
   //logging
   std::cout << "sent to am32: " << name << ", motor id: " << motorID << ", speed: " << speed;
 }
 
 void Weapon::setSpeed(int speed) { //same as like public Command setVoltageC() in frc programming... but with speed
-  int target = constrainSpeed(speed); //sets target
-  currentSpeed = rampTo(currentSpeed, target); //sets speed and lerps
-  sendToAM32(kWeaponMotorID, currentSpeed, "Weapon input"); //sends informaiton to the UART
+  int targetSpeed = constrainSpeed(speed); //sets target
+  currentSpeed = rampTo(currentSpeed, targetSpeed); //sets speed and lerps
+  sendToAM32(kSpinnerMotorID, currentSpeed, "Weapon input"); //sends informaiton to the UART
   std::cout << "set weapon speed to: " << speed;
 }

@@ -28,5 +28,5 @@ void WeaponSim::sendToAM32(int motorID, int speed, String name) {
 void WeaponSim::setSpeed(int speed) {
     int target = constrainSpeed(speed);
     currentSpeed = rampTo(currentSpeed, target);
-    sendToAM32(kWeaponMotorID, currentSpeed, "set weapon speed");
+    sendToAM32(kSpinnerMotorID, currentSpeed, "set weapon speed");
 }

@@ -35,7 +35,7 @@ void RobotContainer::periodic() {
         throttle = mapSbusToSpeed(data.ch[kThrottleChannel - 1]);
         steering = mapSbusToSpeed(data.ch[kSteeringChannel - 1]);
 
-        weaponChannel = mapSbusToSpeed(data.ch[kWeaponChannel - 1]);
+        weaponChannel = mapSbusToSpeed(data.ch[kSpinnerChannel - 1]);
 
         // READ THE INVERT BUTTON using channel 5 as an example
         // SBUS values are usually ~172 for LOW and ~1811 for HIGH
