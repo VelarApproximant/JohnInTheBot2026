@@ -32,7 +32,7 @@ void Drivetrain::sendToAM32(HardwareSerial &uart, int motorID, int speed, String
   };
   uart.write(packet, 4); 
   //logging
-  std::cout << "sent to am32: " + name + ", motor id: " + motorID + ", speed: " + speed + ", serial: " + uart;
+  std::cout << "sent to am32: " << name << ", motor id: " << motorID << ", speed: " << speed << ", serial: " << uart;
 }
 
 void Drivetrain::tankDrive(int throttle, int steering, bool buttonPressed) {

@@ -19,7 +19,7 @@ int Weapon::rampTo(int current, int target) { //math that gives us a smooth tran
     current -= kRampConstant;
     if (current < target) current = target;
   }
-  return current; //lowk copied this func from github
+  return current; 
 }
 
 void Weapon::sendToAM32(int motorID, int speed, String name) {//void means it returns nothing, we take in 2 params for motorID and speed.
@@ -31,12 +31,12 @@ void Weapon::sendToAM32(int motorID, int speed, String name) {//void means it re
   };
   ESC_weaponUART.write(packet, 4); //print() is human readable while write() is raw binary so it pushes everything to the UART.. packet is the array and 4 is the number of bytes to send
   //logging
-  std::cout << "sent to am32: " + name + ", motor id: " + motorID + ", speed: " + speed;
+  std::cout << "sent to am32: " << name << ", motor id: " << motorID << ", speed: " << speed;
 }
 
 void Weapon::setSpeed(int speed) { //same as like public Command setVoltageC() in frc programming... but with speed
   int target = constrainSpeed(speed); //sets target
   currentSpeed = rampTo(currentSpeed, target); //sets speed and lerps
   sendToAM32(kWeaponMotorID, currentSpeed, "Weapon input"); //sends informaiton to the UART
-  std::cout << "set weapon speed to: " + speed;
+  std::cout << "set weapon speed to: " << speed;
 }
