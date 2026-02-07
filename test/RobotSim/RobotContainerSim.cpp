@@ -1,7 +1,7 @@
 
 // RobotContainerSim.cpp
 #include "RobotContainerSim.h"
-#include "simUtil.h"
+#include "../TestUtil/SimUtil.h"
 
 void RobotContainerSim::init() {
     drivetrain.init();
