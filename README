@@ -10,4 +10,10 @@ SIMULATION (ignore if you arent going to sim)
 1. install MSYS2 https://www.msys2.org/
 2. in the msys2 terminal, run "pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain"
 3. verify gcc and g++ version with: "gcc --version" and "g++ --version"
-
+4. if it says "g++ is not a command" or some shit then do whats below (you need to edit the system environment variable)
+5. locate the binary folder in the .zip file for g++, it should be something like C:\msys64\ucrt64\bin     copy this into ur clipboard
+6. go into control panel (if on windows) and search for "system environment variable" or just search it in the start menu
+7. if ur using control panel, you can go to Control Panel > System and Security > System > Advanced system settings
+8. in "system properties" or "user variables", click on the path variable and select "edit"
+9. paste the path of the binary folder into it
+10. maybe restart if it still doesnt show up as a cmd command idk
