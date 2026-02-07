@@ -1,4 +1,3 @@
-// WeaponSim.h
 #pragma once
 #include "../TestUtil/SimUtil.h"
 #include "../src/Constants.h"

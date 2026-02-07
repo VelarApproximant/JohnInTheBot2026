@@ -22,9 +22,7 @@ int WeaponSim::rampTo(int current, int target) {
 }
 
 void WeaponSim::sendToAM32(int motorID, int speed, String name) {
-    std::cout << "sent command to am32: " << name
-              << ", motor: " << motorID
-              << ", with speed: " << speed << "\n";
+    std::cout << "sent command to am32: " << name << ", motor: " << motorID << ", with speed: " << speed << "\n";
 }
 
 void WeaponSim::setSpeed(int speed) {

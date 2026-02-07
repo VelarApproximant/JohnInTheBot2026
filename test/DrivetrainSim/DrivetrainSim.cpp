@@ -22,13 +22,8 @@ int DrivetrainSim::rampTo(int current, int target) {
     return current;
 }
 
-void DrivetrainSim::sendToAM32(HardwareSerial&,
-                              int motorID,
-                              int speed,
-                              String name) {
-    std::cout << "sent command to am32: " << name
-              << ", motor: " << motorID
-              << ", with speed: " << speed << "\n";
+void DrivetrainSim::sendToAM32(HardwareSerial&, int motorID, int speed, String name) {
+    std::cout << "sent command to am32: " << name << ", motor: " << motorID << ", with speed: " << speed << "\n";
 }
 
 void DrivetrainSim::tankDrive(int throttle, int steering, bool buttonPressed) {

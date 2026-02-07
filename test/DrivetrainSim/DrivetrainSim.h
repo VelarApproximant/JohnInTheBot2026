@@ -12,6 +12,7 @@ private:
     int currentLeft = 1500;
     int currentRight = 1500;
 
+    //steering inversion toggle logic
     bool steeringInverted = false;
     bool lastButtonState = false;
 
