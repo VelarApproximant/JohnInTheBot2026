@@ -34,7 +34,7 @@ void Weapon::sendToESC(int motorID, int speed, String name) {
 }
 
 void Weapon::setSpeed(int speed) { 
-  currentSpeed = manualPID(currentSpeed, targetSpeed); 
+  currentSpeed = manualPID(currentSpeed, speed); 
   sendToESC(kSpinnerMotorID, currentSpeed, "Weapon input");
   std::cout << "set weapon speed to: " << speed;
 }
