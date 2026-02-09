@@ -1,15 +1,14 @@
 #include "RobotContainer.h" //#include is the same as a java import
 #include "sbus.h" //sbus is a serial bus that connects this to the transmitter
 
-RobotContainer::RobotContainer() //cpp version of a constructor; "::" refers to a method in a class (in robotContainer.h)
-
-#if defined(ESP32) //tells compiler to only make the sbus if we are using an ESP32 (IDK WHY BUT THIS KILLS ALL ERRORS FOR ME)
-  : sbus(&Serial1, 16, 17, true) //creates new sbus object with those port numbers. true is to invert the sbus protocol (they told me to put it)
-#endif //end if statement
-{} //body of constructor is empty bc nothings inside curlly braces
+RobotContainer::RobotContainer()
+#if defined(ESP32)
+  : sbus(&Serial1, 16, 17, true)
+#endif
+{} 
 
 void RobotContainer::init() {
-    Serial.begin(100000); //opens serial at 100000 baud
+    Serial.begin(DEF_BAUD);
     Serial1.begin(ESC_BAUD); 
     Serial2.begin(ESC_BAUD); 
     
@@ -18,7 +17,7 @@ void RobotContainer::init() {
     weapon.init();
 }
 
-int RobotContainer::mapSbusToSpeed(int sbusValue) {
+int RobotContainer::mapSBUSToSpeed(int sbusValue) {
     return map(sbusValue, 0, 2047, 1000, 2000); //helpful arduino method i can explain later bc its long
 }
 
@@ -32,10 +31,10 @@ void RobotContainer::periodic() {
     if (sbus.Read()) {
         auto data = sbus.data();
 
-        throttle = mapSbusToSpeed(data.ch[kThrottleChannel - 1]);
-        steering = mapSbusToSpeed(data.ch[kSteeringChannel - 1]);
+        throttle = mapSBUSToSpeed(data.ch[kThrottleChannel - 1]);
+        steering = mapSBUSToSpeed(data.ch[kSteeringChannel - 1]);
 
-        weaponChannel = mapSbusToSpeed(data.ch[kSpinnerChannel - 1]);
+        weaponChannel = mapSBUSToSpeed(data.ch[kSpinnerChannel - 1]);
 
         // READ THE INVERT BUTTON using channel 5 as an example
         // SBUS values are usually ~172 for LOW and ~1811 for HIGH

@@ -30,7 +30,7 @@ private:
     int steering = 1500;
     int weaponChannel = 1500;
 
-    int mapSbusToSpeed(int sbusValue); //declares there must be a mapSbusToSpeed method in the cpp file
+    int mapSBUSToSpeed(int sbusValue); //declares there must be a mapSBUSToSpeed method in the cpp file
 };
 
 #endif

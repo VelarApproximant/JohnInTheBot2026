@@ -5,11 +5,13 @@
 #define SBUS_recieverPin 4 //connect the SBUS signal wire here
 #define SBUS_UART Serial
 
-#define ESC_SpinnerUART Serial1
-#define ESC_leftUART Serial1
-#define ESC_rightUART Serial2
+#define kSpinnerUART Serial1
+#define kLeftUART Serial1
+#define kRightUART Serial2
 
 #define ESC_BAUD 115200 //BAUD rate in bits per second (bps)
+#define DEF_BAUD 1200
+#define WIN_BAUD 9600
 
 // motor id
 #define kLeftMotorID 1 //TODO: find real values

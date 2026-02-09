@@ -3,15 +3,15 @@
 #include <string>
 
 void Drivetrain::init() {
-  ESC_leftUART.begin(ESC_BAUD); //init for both motor UART
-  ESC_rightUART.begin(ESC_BAUD);
+  kLeftUART.begin(ESC_BAUD); //init for both motor UART
+  kRightUART.begin(ESC_BAUD);
 }
 
 int Drivetrain::constrainSpeed(int speed) {
   return constrain(speed, kMinSpeed, kMaxSpeed); //sets speed clamp
 }
 
-int Drivetrain::rampTo(int current, int target) { 
+int Drivetrain::manualPID(int current, int target) { 
   if (current < target) { //TODO: change current and target to currentSpeed and targetSpeed
     current += kRampConstant;
     if (current > target) current = target;
@@ -23,7 +23,7 @@ int Drivetrain::rampTo(int current, int target) {
   return current; 
 }
 
-void Drivetrain::sendToAM32(HardwareSerial &uart, int motorID, int speed, String name) {
+void Drivetrain::sendToESC(HardwareSerial &uart, int motorID, int speed, String name) {
   uint8_t packet[4] = { 
     0xAA,
     (uint8_t)motorID,
@@ -52,10 +52,10 @@ void Drivetrain::tankDrive(int throttle, int steering, bool buttonPressed) {
   int targetLeft  = constrainSpeed(throttle + steeringOffset);
   int targetRight = constrainSpeed(throttle - steeringOffset);
 
-  currentLeft = rampTo(currentLeft, targetLeft); //smooth accel
-  currentRight = rampTo(currentRight, targetRight);
+  currentLeft = manualPID(currentLeft, targetLeft); //smooth accel
+  currentRight = manualPID(currentRight, targetRight);
 
-  sendToAM32(ESC_leftUART, kLeftMotorID, currentLeft, "Drivetrain left stick"); //sends data to AM32
-  sendToAM32(ESC_rightUART, kRightMotorID, currentRight, "Drivetrain right stick");
+  sendToESC(kLeftUART, kLeftMotorID, currentLeft, "Drivetrain left speed"); //sends data to AM32
+  sendToESC(kRightUART, kRightMotorID, currentRight, "Drivetrain right speed");
 }
 

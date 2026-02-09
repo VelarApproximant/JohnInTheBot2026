@@ -13,9 +13,9 @@ class Weapon {
   private:
     int currentSpeed = 1500; //I set the basic speed of the weapon to idle at a no speed
 
-    int rampTo(int current, int target);
+    int manualPID(int current, int target);
     int constrainSpeed(int value);
-    void sendToAM32(int motorID, int speed, String name);
+    void sendToESC(int motorID, int speed, String name);
 };
 
 #endif

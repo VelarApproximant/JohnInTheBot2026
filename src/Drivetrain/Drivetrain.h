@@ -18,9 +18,9 @@ class Drivetrain {
     bool lastButtonState = false;
 
 
-    int rampTo(int current, int target);
+    int manualPID(int current, int target);
     int constrainSpeed(int value);
-    void sendToAM32(HardwareSerial &uart, int motorID, int speed, String name);
+    void sendToESC(HardwareSerial &uart, int motorID, int speed, String name);
 };
 
 #endif
