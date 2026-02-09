@@ -15,11 +15,11 @@ inline void delay(int ms) {
 
 inline int constrain(int val, int minVal, int maxVal) { //a clamp; takes a value and clamps it between 2nd and 3rd param
     if (val < minVal) {
-        return minVal
-    };
+        return minVal;
+    }
     if (val > maxVal) {
-        return maxVal
-    };
+        return maxVal;
+    }
     return val;
 }
 

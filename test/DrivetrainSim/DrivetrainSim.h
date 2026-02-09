@@ -1,6 +1,6 @@
 // DrivetrainSim.h
 #pragma once
-#include "../Util/SimUtil.h" 
+#include "../TestUtil/SimUtil.h" 
 #include "../src/Constants.h"
 
 class DrivetrainSim {
