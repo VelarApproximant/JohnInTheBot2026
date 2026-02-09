@@ -17,3 +17,13 @@ SIMULATION (ignore if you arent going to sim)
 8. in "system properties" or "user variables", click on the path variable and select "edit"
 9. paste the path of the binary folder into it
 10. maybe restart if it still doesnt show up as a cmd command idk
+
+
+BAUD CONFIG
+1. to find your baud rate, go into cmd and type "mode"
+2. baud should be the first item on the list.
+3. if the stated baud is 1200, i have already set that as the default, but it is EXTREMELY slow
+4. to change your baud, type "mode COM1 baud=9600 parity=n data=8 stop=1"
+5. this also aligns with n81 stuff
+6. then, in RobotContainer.cpp, change Serial.begin(DEF_BAUD) to Serial.begin(WIN_BAUD)
+7. u good to go
